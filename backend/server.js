@@ -10,9 +10,9 @@ app.use(cors());
 
 // Define an endpoint that must be called with an access token
 app.get("/api/external", checkJwt, (req, res) => {
-    res.send({
-        msg: "Your Access Token was successfully validated!"
-    });
+  res.send({
+    msg: "Your Access Token was successfully validated!",
+  });
 });
 
 // Start the app
