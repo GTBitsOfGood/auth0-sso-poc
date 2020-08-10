@@ -1,6 +1,6 @@
 ## auth0-sso-poc
 
-This is a project following the [Auth0 React SPA tutorial](https://auth0.com/docs/quickstart/spa/react/01-login) created to demonstrate the `auth0-spa-js` tools work with existing Auth0 APIs.
+Proof-of-concept project using `auth0-react` SDK to implement client-side auth. Also showcases a auth-protected API endpoint.
 
 ### Setup
 
