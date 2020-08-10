@@ -5,7 +5,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-frontend": "cd frontend && npm start",
-    "start-backend": "cd backend && npm start"
+    "start-backend": "cd backend && npm start",
+    "secrets:logout": "(bw logout || true)",
+    "secrets:login": "cross-env-shell BW_SESSION=`bw login product@bitsofgood.org --raw`",
+    "secrets:sync": "bw sync && npm run secrets:sync-frontend && npm run secrets:sync-backend",
+    "secrets:sync-backend": "bw get item auth0-sso-poc/backend/.env | fx .notes > \"backend/.env\"",
+    "secrets:sync-frontend": "bw get item auth0-sso-poc/frontend/.env | fx .notes > \"frontend/.env\"",
+    "secrets": "npm run secrets:logout && npm run secrets:login \"npm run secrets:sync\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/GTBitsOfGood/auth0-sso-poc/issues"
   },
-  "homepage": "https://github.com/GTBitsOfGood/auth0-sso-poc#readme"
+  "homepage": "https://github.com/GTBitsOfGood/auth0-sso-poc#readme",
+  "devDependencies": {
+    "@bitwarden/cli": "^1.11.0",
+    "cross-env": "^7.0.2",
+    "fx": "^19.0.1"
+  }
 }
